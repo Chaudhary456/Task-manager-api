@@ -2,9 +2,14 @@ const express=require('express')
 const Task=require('../models/task')
 const auth=require('../middleware/auth')
 const router= new express.Router()
+const multer=require('multer')
 
 
-router.post('/tasks',auth,async (req,res)=>{
+
+const create=multer()
+//when we pass data as form-data in postman or from a site we have to use multer it is different for text onle and sending pdf+text
+//http://expressjs.com/en/resources/middleware/multer.html
+router.post('/tasks',auth,create.none(),async (req,res)=>{
     const task=new Task({
         ...req.body,
         owner:req.user._id
