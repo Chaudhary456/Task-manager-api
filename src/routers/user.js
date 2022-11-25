@@ -14,7 +14,7 @@ router.post('/users',async (req,res)=>{
         await user.save()
         // console.log(user.email)
         // console.log(user.name)
-        sendWelcomeEmail(user.email , user.name)
+        // sendWelcomeEmail(user.email , user.name)
         const token=await user.generateAuthToken()
         res.status(201).send({user,token})
 
@@ -122,7 +122,7 @@ router.delete('/users/me', auth, async (req,res)=>{
         // //     res.status(404).send()
         // // }
         req.user.remove()
-        sendCancellationEmail(req.user.email , req.user.name)
+        // sendCancellationEmail(req.user.email , req.user.name)
         res.status(200).send(req.user)
     }
     catch(e){
@@ -133,7 +133,7 @@ router.delete('/users/me', auth, async (req,res)=>{
 const upload= multer({
     // dest:'avatars',
     limits:{
-        fileSize: 1000000      //in bytes
+        fileSize: 100000000      //in bytes
     },     
     fileFilter(req,file,cb){         //cb -> callback function
         if(!file.originalname.match(/\.(jpg|jpeg|png)$/)){ 

@@ -21,25 +21,25 @@ const port=process.env.PORT  // process.env.PORT || 3000 , means: whatever is in
 //     //don't use next() to tell express not move forward to any route handler
 // })
 
-// const multer=require('multer')
+const multer=require('multer')
 
-// const upload= multer({
-//     dest:'images',
-//     limits:{
-//         fileSize:1000000
-//     },
-//     fileFilter (req , file, cb ){
-//             if(!file.originalname.match(/\.(jpg|jpeg|png)$/)){
-//             return cb(new Error("please upload docx"))
+const upload= multer({
+    dest:'images',
+    limits:{
+        fileSize:1000000
+    },
+    fileFilter (req , file, cb ){
+            if(!file.originalname.match(/\.(jpg|jpeg|png)$/)){
+            return cb(new Error("please upload docx"))
 
-//         }
-//         cb(undefined,true)
-//     }
-// })
+        }
+        cb(undefined,true)
+    }
+})
 
-// app.post('/upload',upload.single('upload'),(req,res)=>{
-//     res.send()
-// })
+app.post('/upload',upload.single('upload'),(req,res)=>{
+    res.send()
+})
 
 
 
@@ -52,3 +52,7 @@ app.use(taskRouter)
 app.listen(port,()=>{
     console.log("server is up on "+port)
 } ) 
+
+
+// To host database:  C:/users/schau/mongodb/bin/mongod.exe --dbpath=C:/users/schau/mongodb-data
+
