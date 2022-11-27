@@ -34,13 +34,7 @@ To run this project, you will need to add the following environment variables to
 Clone the project
 
 ```bash
-  git clone https://github.com/Ingenuity07/Task-Manager-API.git
-```
-
-Go to the project directory
-
-```bash
-  cd Task-Manager-API
+  git clone https://github.com/Chaudhary456/Task-manager-api.git
 ```
 
 Install dependencies
@@ -51,10 +45,10 @@ Install dependencies
 
 **Make sure All Environment variables are defined in .env extension file**
 
-Start the server
+Start the server after setting all the environment variables
 
 ```bash
-  npm run start
+  npm run dev
 ```
 **Test the API through Postman or Browser**
 
